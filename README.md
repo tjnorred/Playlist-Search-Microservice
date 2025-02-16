@@ -6,21 +6,25 @@ This application provides a server for searching songs within playlists. It uses
 
 The Playlist Search Server allows clients to search for songs in a collection of playlists.  Clients send a JSON payload containing the playlists, playlist name, search category (e.g., "title", "artist", "genre"), and search term. The server searches the specified playlist and returns a string response indicating whether a match was found or not.
 
+## Installation
 
-**Prerequisites:**
-- Python 3.7+
-- ZeroMQ library (`pyzmq`)
+* **Prerequisites:**
+    - Python 3.7+
+    - ZeroMQ library (`pyzmq`)
 
-### Install:
-1) Clone Repository `git clone https://github.com/tjnorred/CS361-A.git`
-2) `cd CS361-A`
-3) `python -m venv venv`
-4) Linux/Mac: `source venv/bin/activate` Windows: `venv\Scripts\activate`
-5) `pip install -r requirements.txt` or `pip install pyzmq`
+* **Installation Steps:**
+    1) Clone the Repository: `git clone https://github.com/tjnorred/CS361-A.git`
+    2) Change directory: `cd CS361-A`
+    3) Create virtual environment: `python -m venv venv`
+    4) Activate virtual environment:
+        * Linux/Mac: `source venv/bin/activate` 
+        * Windows: `venv\Scripts\activate`
+    5) Install requirements: `pip install -r requirements.txt` or `pip install pyzmq`
 
-### Start the server:
-1) Linux/Mac: `source venv/bin/activate` Windows: `venv\Scripts\activate` (If not already activated)
-2) `python server.py`
+## Run the server
+* `python server.py`
+
+## Communication contract
 
 ### Connect client to Server:
 ```
@@ -51,5 +55,5 @@ socket.send_json(data)
 socket.recv_string()
 ```
 
-### Logs:
+## Logging
 The server logs all activities to server.log. This file contains timestamps, client IPs, received requests, sent responses, and any errors that occurred.
