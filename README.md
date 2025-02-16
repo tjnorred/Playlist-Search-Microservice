@@ -24,11 +24,11 @@ The Playlist Search Server allows clients to search for songs in a collection of
 ## Run the server
 You can start the server with the default port (5555) or specify a custom port using the -p or --port argument.
 
-a) Using the default port:
+a. Using the default port:
 ```bash
 python server.py
 ```
-b) Specifying a custom port:
+b. Specifying a custom port:
 ```bash
 python server.py -p 8080
 ```
@@ -70,7 +70,7 @@ socket.recv_string()
 
 ## UML Sequence Diagram
 
-* placeholder
+[UML Diagram](docs/uml-sequence-diagram-example.png)
 
 ## Logging
 The server logs all activities to server.log. This file contains timestamps, client IPs, received requests, sent responses, and any errors that occurred.
