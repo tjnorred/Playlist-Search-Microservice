@@ -29,13 +29,7 @@ def search_playlist(playlists: dict, playlist_name: str, search_category: str, s
 
     return "No matches found"
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Playlist Search")
-    parser.add_argument("-p", "--port", type=int, default=5555, help="Port number to listen on (default: 5555)")
-    args = parser.parse_args()
-
-    port = args.port
-
+def server(port: int) -> None:
     context = zmq.Context()
     socket = context.socket(zmq.REP)
     socket.bind(f"tcp://*:{port}")
@@ -69,6 +63,15 @@ def main() -> None:
             print(log_message)
             logging.exception(log_message)
             socket.send_string(f"ERROR: An unexpected error occurred. Check your data and try again.")
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Playlist Search")
+    parser.add_argument("-p", "--port", type=int, default=5555, help="Port number to listen on (default: 5555)")
+    args = parser.parse_args()
+
+    port = args.port
+
+    server(port)
 
 if __name__ == "__main__":
     main()

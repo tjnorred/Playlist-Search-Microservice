@@ -1,7 +1,7 @@
 import unittest
 from server import search_playlist
 
-class TestSearchPlaylist(unittest.TestCase):
+class TestPlaylistSearch(unittest.TestCase):
 
     def setUp(self):
         self.playlists = {
@@ -46,16 +46,18 @@ class TestSearchPlaylist(unittest.TestCase):
         self.assertEqual(result, "The genre Electronic was found in the playlist")
 
     def test_genre_not_found(self):
-        result = search_playlist(self.playlists, "Chill Vibes", "genre", "Country")
+        result = search_playlist(self.playlists, "Rock Anthems", "genre", "Country")
         self.assertEqual(result, "No matches found")
 
-    def test_case_insensitive(self):
+    def test_case_all_lowercase(self):
         result = search_playlist(self.playlists, "Rock Anthems", "title", "bohemian rhapsody")
         self.assertEqual(result, "The title bohemian rhapsody was found in the playlist")
 
+    def test_case_all_uppercase(self):
         result = search_playlist(self.playlists, "Running Mood", "artist", "CALVIN HARRIS")
         self.assertEqual(result, "The artist CALVIN HARRIS was found in the playlist")
 
+    def test_case_mixed_case(self):
         result = search_playlist(self.playlists, "Chill Vibes", "genre", "r&B")
         self.assertEqual(result, "The genre r&B was found in the playlist")
 

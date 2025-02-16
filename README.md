@@ -74,3 +74,8 @@ socket.recv_string()
 
 ## Logging
 The server logs all activities to server.log. This file contains timestamps, client IPs, received requests, sent responses, and any errors that occurred.
+
+## Testing
+Tests are under the `/tests` directory
+
+Run the unit tests: `python -m unittest tests/testPlaylistSearch.py`
