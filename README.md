@@ -32,6 +32,10 @@ b) Specifying a custom port:
 ```bash
 python server.py -p 8080
 ```
+or
+```bash
+python server.py --port 8080
+```
 
 ## Communication contract
 
