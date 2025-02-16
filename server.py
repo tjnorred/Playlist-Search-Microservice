@@ -53,14 +53,15 @@ def main() -> None:
             logging.info(log_message)
         
         except KeyboardInterrupt:
-            print("WARNING: Server shutting down")
-            logging.warning("Server shutting down")
+            log_message = "Server shutting down"
+            print(log_message)
+            logging.warning(log_message)
             break
         except Exception as e:
             client_ip = socket.getsockopt_string(zmq.LAST_ENDPOINT).split("://")[1].split(":")[0]
-            error_message = f"An unexpected error occurred from {client_ip}: {e}"
-            print(error_message)
-            logging.exception(error_message)
+            log_message = f"An unexpected error occurred from {client_ip}: {e}"
+            print(log_message)
+            logging.exception(log_message)
             socket.send_string(f"ERROR: An unexpected error occurred. Check your data and try again.")
 
 if __name__ == '__main__':

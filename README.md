@@ -55,5 +55,9 @@ socket.send_json(data)
 socket.recv_string()
 ```
 
+## UML Sequence Diagram
+
+* placeholder
+
 ## Logging
 The server logs all activities to server.log. This file contains timestamps, client IPs, received requests, sent responses, and any errors that occurred.
