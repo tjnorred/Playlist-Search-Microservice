@@ -7,11 +7,12 @@
 import zmq
 import json
 import logging
+import argparse
 
-logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename="server.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def search_playlist(playlists: dict, playlist_name: str, search_category: str, search_term: str) -> str:
-    '''Searches a playlist by category and the search term. Returns string notifying the user if there was a match or not'''
+    """Searches a playlist by category and the search term. Returns string notifying the user if there was a match or not"""
 
     # Check if the playlist exists
     if playlist_name not in playlists:
@@ -29,9 +30,14 @@ def search_playlist(playlists: dict, playlist_name: str, search_category: str, s
     return "No matches found"
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Playlist Search")
+    parser.add_argument("-p", "--port", type=int, default=5555, help="Port number to listen on (default: 5555)")
+    args = parser.parse_args()
+
+    port = args.port
+
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    port = 5555
     socket.bind(f"tcp://*:{port}")
 
     print(f"INFO: Server is listening on port {port}")
@@ -64,6 +70,6 @@ def main() -> None:
             logging.exception(log_message)
             socket.send_string(f"ERROR: An unexpected error occurred. Check your data and try again.")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
 

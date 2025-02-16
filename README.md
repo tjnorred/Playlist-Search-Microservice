@@ -22,7 +22,16 @@ The Playlist Search Server allows clients to search for songs in a collection of
     5) Install requirements: `pip install -r requirements.txt` or `pip install pyzmq`
 
 ## Run the server
-* `python server.py`
+You can start the server with the default port (5555) or specify a custom port using the -p or --port argument.
+
+a) Using the default port:
+```bash
+python server.py
+```
+b) Specifying a custom port:
+```bash
+python server.py -p 8080
+```
 
 ## Communication contract
 
@@ -30,7 +39,7 @@ The Playlist Search Server allows clients to search for songs in a collection of
 ```
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5555")
+socket.connect("tcp://localhost:5555") # change the port number to match the server
 ```
 
 ### Request Data:
