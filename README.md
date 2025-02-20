@@ -9,16 +9,16 @@
 
 **[Using Playlist Search](#using-playlist-search)**
 
-**[Installation](#installation)**
-*  [Prerequisites](#prerequisites)
-*  [Installation Steps](#installation-steps)
+* **[Installation](#installation)**
+    *  [Prerequisites](#prerequisites)
+    *  [Installation Steps](#installation-steps)
 
 
-**[Run the server](#run-the-server)**
+* **[Running Server](#running-server)**
 
-*  [Using the default port](#using-the-default-port)
+    *  [Using the default port](#using-the-default-port)
 
-*  [Specifying a custom port](#specifying-a-custom-port)
+    *  [Specifying a custom port](#specifying-a-custom-port)
 
 **[Communication contract](#communication-contract)**
 
@@ -40,48 +40,48 @@
 The Playlist Search Server allows clients to search for songs in a collection of playlists.  Clients send a JSON payload containing the playlists, playlist name, search category (e.g., "title", "artist", "genre"), and search term. The server searches the specified playlist and returns a string response indicating whether a match was found or not.
 
 ## Using Playlist Search
-### Installation
+* ### Installation
 
-* #### Prerequisites:
-    - Python 3.7+
-    - ZeroMQ library (`pyzmq`)
+    * #### Prerequisites:
+        - Python 3.7+
+        - ZeroMQ library (`pyzmq`)
 
-* #### Installation Steps:
-    1) Clone the Repository: `git clone https://github.com/tjnorred/CS361-A.git`
-    2) Change directory: `cd CS361-A`
-    3) (Optional) Create virtual environment: `python -m venv venv`
-    4) (Optional) Activate virtual environment:
+    * #### Installation Steps:
+        1) Clone the Repository: `git clone https://github.com/tjnorred/CS361-A.git`
+        2) Change directory: `cd CS361-A`
+        3) (Optional) Create virtual environment: `python -m venv venv`
+        4) (Optional) Activate virtual environment:
         * Linux/Mac: `source venv/bin/activate` 
         * Windows: `venv\Scripts\activate`
-    5) Install requirements: `pip install -r requirements.txt` or `pip install pyzmq`
+        5) Install requirements: `pip install -r requirements.txt` or `pip install pyzmq`
 
-## Run the server
-You can start the server with the default port (5555) or specify a custom port using the -p or --port argument.
+* ### Running Server
+    You can start the server with the default port (5555) or specify a custom port using the -p or --port argument.
 
-* #### Using the default port:
-    ```bash
-    python server.py
-    ```
-* #### Specifying a custom port:
-    ```bash
-    python server.py -p 8080
-    ```
-    or
+    * #### Using the default port:
+        ```bash
+        python server.py
+        ```
+    * #### Specifying a custom port:
+        ```bash
+        python server.py -p 8080
+        ```
+        or
 
-    ```bash
-    python server.py --port 8080
-    ```
+        ```bash
+        python server.py --port 8080
+        ```
 
 ## Communication contract
 
-* ### Connect client to Server:
+* #### Connect client to Server:
     ```
     context = zmq.Context()
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5555") # change the port number to match the server
     ```
 
-* ### Request Data:
+* #### Request Data:
     ```
     # Example payload
     data = {
@@ -98,7 +98,7 @@ You can start the server with the default port (5555) or specify a custom port u
     socket.send_json(data)
     ```
 
-* ### Receive Data:
+* #### Receive Data:
     ```
     socket.recv_string()
     ```
