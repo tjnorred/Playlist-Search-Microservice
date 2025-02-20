@@ -15,8 +15,8 @@ The Playlist Search Server allows clients to search for songs in a collection of
 * **Installation Steps:**
     1) Clone the Repository: `git clone https://github.com/tjnorred/CS361-A.git`
     2) Change directory: `cd CS361-A`
-    3) Create virtual environment: `python -m venv venv`
-    4) Activate virtual environment:
+    3) (Optional) Create virtual environment: `python -m venv venv`
+    4) (Optional) Activate virtual environment:
         * Linux/Mac: `source venv/bin/activate` 
         * Windows: `venv\Scripts\activate`
     5) Install requirements: `pip install -r requirements.txt` or `pip install pyzmq`
