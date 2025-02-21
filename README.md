@@ -22,7 +22,7 @@
 
 **[Communication contract](#communication-contract)**
 
-*  [Connect client to Server](#connect-client-to-server)
+*  [Connect a Client to Server](#connect-a-client-to-server)
 
 *  [Request Data](#request-data)
 
@@ -74,7 +74,7 @@ The Playlist Search Server allows clients to search for songs in a collection of
 
 ## Communication contract
 
-* #### Connect client to Server:
+* #### Connect a Client to Server:
     ```
     context = zmq.Context()
     socket = context.socket(zmq.REQ)
