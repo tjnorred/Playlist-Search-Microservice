@@ -2,7 +2,7 @@
 # Course: CS361 - Software Engineering I
 # Assignment: 8
 # Due Date: 02/25/2025
-# Description: Microservice A
+# Description: Microservice A - Playlist Search
 
 import zmq
 import json
@@ -42,7 +42,7 @@ def server(port: int) -> None:
             received_data = json.loads(socket.recv_string())
             client_ip = socket.getsockopt_string(zmq.LAST_ENDPOINT).split("://")[1].split(":")[0]
             log_message = f"Received request from {client_ip}: {received_data}"
-            print(log_message) 
+            print(f"Received request from {client_ip}: Searching playlist {received_data["playlist_name"]} for {received_data["search_category"]} '{received_data["search_term"]}'")
             logging.info(log_message)
 
             results = search_playlist(received_data["playlists"], received_data["playlist_name"], received_data["search_category"], received_data["search_term"])
