@@ -1,5 +1,3 @@
-[![GitHub release](https://img.shields.io/github/release/tjnorred/CS361-A.svg)](https://github.com/tjnorred/CS361-A/releases)
-
 # Playlist Search
 
 ## Contents
