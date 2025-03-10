@@ -53,6 +53,8 @@ def server(port: int) -> None:
             logging.info(log_message)
         
         except KeyboardInterrupt:
+            socket.close()
+            context.term()
             log_message = "Server shutting down"
             print(log_message)
             logging.warning(log_message)
